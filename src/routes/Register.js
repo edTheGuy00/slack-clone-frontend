@@ -71,30 +71,27 @@ class Register extends React.Component {
       <Container text>
         <Header as="h2">Register</Header>
         <Form>
-          <Form.Field>
+          <Form.Field error={!!usernameError}>
             <Input
               name="username"
-              error={!!usernameError}
               onChange={this.onTextChange}
               placeholder="Username"
               value={username}
               fluid
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field error={!!emailError}>
             <Input
               name="email"
-              error={!!emailError}
               onChange={this.onTextChange}
               placeholder="Email"
               value={email}
               fluid
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field error={!!passwordError}>
             <Input
               name="password"
-              error={!!passwordError}
               onChange={this.onTextChange}
               type="password"
               placeholder="Password"
@@ -103,13 +100,13 @@ class Register extends React.Component {
             />
           </Form.Field>
           <Button onClick={this.onSubmit} >Submit</Button>
-          {usernameError || emailError || passwordError ? (
-            <Message
-              error
-              header="There was an error with your submission"
-              list={errorList}
-            />) : null}
         </Form>
+        {errorList.length ? (
+          <Message
+            error
+            header="There was an error with your submission"
+            list={errorList}
+          />) : null}
       </Container>
     );
   }
