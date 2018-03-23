@@ -1,6 +1,6 @@
 import React from 'react';
-import {extendObservable} from 'mobx';
-import {observer} from 'mobx-react';
+import { extendObservable } from 'mobx';
+import { observer } from 'mobx-react';
 import { Button, Input, Container, Header } from 'semantic-ui-react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -22,13 +22,13 @@ class Login extends React.Component {
     });
     console.log(response);
     const { ok, token, refreshToken } = response.data.login;
-    if(ok) {
+    if (ok) {
       localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
     }
   };
 
-  onChange = e => {
+  onChange = (e) => {
     const { name, value } = e.target;
     this[name] = value;
   };
@@ -57,7 +57,7 @@ class Login extends React.Component {
       </Container>
     );
   }
-};
+}
 
 const loginMutation = gql`
   mutation($email: String!, $password: String!) {
