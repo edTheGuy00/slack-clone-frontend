@@ -52,7 +52,7 @@ const user = ({ id, name }) => (
 );
 
 export default ({
-  teamName, username, channels, users, onAddChannelClick, teamId, onInvitePeopleClick,
+  teamName, username, channels, users, onAddChannelClick, teamId, onInvitePeopleClick, isOwner,
 }) => (
   <ChannelWrapper>
     <PushLeft>
@@ -61,7 +61,9 @@ export default ({
     </PushLeft>
     <div>
       <SideBarList>
-        <SideBarListHeader>Channels <Icon onClick={onAddChannelClick} name="add circle" /></SideBarListHeader>
+        <SideBarListHeader>
+          Channels {isOwner && <Icon onClick={onAddChannelClick} name="add circle" />}
+        </SideBarListHeader>
         {channels.map(c => channel(c, teamId))}
       </SideBarList>
     </div>
@@ -71,10 +73,12 @@ export default ({
         {users.map(user)}
       </SideBarList>
     </div>
+    {isOwner && (
     <div>
       <a href="#invite-people" onClick={onInvitePeopleClick} >
         + Invite Poeple
       </a>
     </div>
+    )}
   </ChannelWrapper>
 );
