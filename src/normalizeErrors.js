@@ -1,6 +1,6 @@
 // this util takes in an array of errors
 // [{ path: '', message: ''}]
-// and returns an object 
+// and returns an object
 /*
 {
     email: ['error1', 'error2'...]

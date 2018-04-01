@@ -15,7 +15,7 @@ const InvitePeopleModal = ({
   handleSubmit,
   isSubmitting,
   touched,
-  errors
+  errors,
 }) => (
   <Modal size="tiny" open={open} onClose={onClose}>
     <Modal.Header>Add a new team member</Modal.Header>
